@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-counter-deployment
+  name: counter-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go-counter
+      app: counter
   template:
     metadata:
       labels:
-        app: go-counter
+        app: counter
     spec:
       containers:
         - name: counter
-          image: coolersai/go-counter-kub-image:latest
+          image: docker_go-counter-kub:latest
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
